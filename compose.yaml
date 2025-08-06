@@ -10,6 +10,7 @@ services:
       - "53:53/tcp"
     volumes:
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf
+    network_mode: host
 
   traefik:
     image: traefik:v3.0
