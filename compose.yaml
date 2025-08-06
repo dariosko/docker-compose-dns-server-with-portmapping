@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   dnsmasq:
     image: jpillora/dnsmasq
@@ -15,11 +13,11 @@ services:
 
   traefik:
     image: traefik:v3.0
-    container_name: traefik
+    container_name: trafik
     restart: unless-stopped
     ports:
       - "80:80"         # HTTP only
-      - "8080:8080"     # Traefik dashboard
+      - "8083:8080"     # Traefik dashboard
     volumes:
       - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
       - ./traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro
