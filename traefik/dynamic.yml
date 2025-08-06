@@ -1,0 +1,57 @@
+http:
+  routers:
+    nas:
+      rule: "Host(`nas.sko`)"
+      entryPoints: [web]
+      service: nas-service
+
+    photo:
+      rule: "Host(`photo.nas.sko`)"
+      entryPoints: [web]
+      service: photo-service
+
+    server:
+      rule: "Host(`server.sko`)"
+      entryPoints: [web]
+      service: server-service
+
+    komodo:
+      rule: "Host(`komodo.sko`)"
+      entryPoints: [web]
+      service: komodo-service
+
+    dozzle:
+      rule: "Host(`dozzle.sko`)"
+      entryPoints: [web]
+      service: dozzle-service
+
+    traefik-dashboard:
+      rule: "Host(`traefik.sko`)"
+      entryPoints: [web]
+      service: api@internal
+
+  services:
+    nas-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.101:5000"
+
+    photo-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.10:5000/photo"
+
+    server-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.102"
+
+    komodo-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.102:9120"
+
+    dozzle-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.102:8080"
