@@ -8,7 +8,6 @@ services:
     ports:
       - "53:53/udp"
       - "53:53/tcp"
-      - "8084:8080"
     volumes:
       - ./dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf
     network_mode: host

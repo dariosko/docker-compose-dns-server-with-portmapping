@@ -25,10 +25,15 @@ http:
       entryPoints: [web]
       service: dozzle-service
 
+    dnsmasq:
+      rule: "Host(`dnsmasq.sko`)"
+      entryPoints: [web]
+      service: dnsmasq-service
+
     traefik-dashboard:
       rule: "Host(`traefik.sko`)"
       entryPoints: [web]
-      service: api@internal
+      service: traefik-service
 
   services:
     nas-service:
@@ -54,4 +59,14 @@ http:
     dozzle-service:
       loadBalancer:
         servers:
+          - url: "http://192.168.88.102:8084"
+
+    dnsmasq-service:
+      loadBalancer:
+        servers:
           - url: "http://192.168.88.102:8080"
+
+    traefik-service:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.88.102:8083"
