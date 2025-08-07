@@ -6,11 +6,11 @@ http:
       service: nas-service
 
     photo:
-      rule: "Host(`photo.nas.sko`)"
-      entryPoints: [web]
       service: photo-service
       middlewares:
-        - add-photo-prefix
+        - "add-photo-prefix"
+      rule: "Host(`photo.nas.sko`)"
+      entryPoints: [web]
 
     server:
       rule: "Host(`server.sko`)"
