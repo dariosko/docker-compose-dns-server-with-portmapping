@@ -8,7 +8,7 @@ http:
     photo:
       service: photo-service
       middlewares:
-        - "add-photo-prefix"
+        - "photo-path-rewrite"
       rule: "Host(`photo.nas.sko`)"
       entryPoints: [web]
 
@@ -38,9 +38,10 @@ http:
       service: traefik-service
 
   middlewares:
-    add-photo-prefix:
-      addPrefix:
-        prefix: "/photo"
+    photo-path-rewrite:
+      replacePathRegex:
+        regex: "^/(.*)"
+        replacement: "/photo/$1"
 
   services:
     nas-service:
