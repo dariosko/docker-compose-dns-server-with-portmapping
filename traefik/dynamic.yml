@@ -37,10 +37,10 @@ http:
       entryPoints: [web]
       service: traefik-service
 
-  middlewares:
-    add-photo-prefix:
-      addPrefix:
-        prefix: "/photo"
+  # middlewares:
+  #   add-photo-prefix:
+  #     addPrefix:
+  #       prefix: "/photo"
 
   services:
     nas-service:
