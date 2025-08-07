@@ -7,8 +7,8 @@ http:
 
     photo:
       service: photo-service
-      # middlewares:
-      #   - "add-photo-prefix"
+      middlewares:
+        - "add-photo-prefix"
       rule: "Host(`photo.nas.sko`)"
       entryPoints: [web]
 
@@ -37,10 +37,10 @@ http:
       entryPoints: [web]
       service: traefik-service
 
-  # middlewares:
-  #   add-photo-prefix:
-  #     addPrefix:
-  #       prefix: "/photo"
+  middlewares:
+    add-photo-prefix:
+      addPrefix:
+        prefix: "/photo"
 
   services:
     nas-service:
