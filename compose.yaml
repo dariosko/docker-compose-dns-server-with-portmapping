@@ -13,7 +13,7 @@ services:
     network_mode: host
 
   traefik:
-    image: traefik
+    image: traefik:v3.0
     container_name: trafik
     restart: unless-stopped
     ports:
