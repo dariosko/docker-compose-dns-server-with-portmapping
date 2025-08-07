@@ -9,6 +9,8 @@ http:
       rule: "Host(`photo.nas.sko`)"
       entryPoints: [web]
       service: photo-service
+      middlewares:
+        - add-photo-prefix
 
     server:
       rule: "Host(`server.sko`)"
@@ -35,6 +37,12 @@ http:
       entryPoints: [web]
       service: traefik-service
 
+  middlewares:
+    add-photo-prefix:
+      replacePathPrefix:
+        prefix: /
+        replacement: /photo
+
   services:
     nas-service:
       loadBalancer:
@@ -44,7 +52,7 @@ http:
     photo-service:
       loadBalancer:
         servers:
-          - url: "http://192.168.88.10:5000/photo"
+          - url: "http://192.168.88.101:5000"
 
     server-service:
       loadBalancer:
