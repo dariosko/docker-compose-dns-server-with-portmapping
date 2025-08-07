@@ -39,9 +39,8 @@ http:
 
   middlewares:
     add-photo-prefix:
-      replacePathPrefix:
-        prefix: /
-        replacement: /photo
+      addPrefix:
+        prefix: "/photo"
 
   services:
     nas-service:
