@@ -7,8 +7,8 @@ http:
 
     photo:
       service: photo-service
-      middlewares:
-        - "add-photo-prefix"
+      # middlewares:
+      #   - "add-photo-prefix"
       rule: "Host(`photo.nas.sko`)"
       entryPoints: [web]
 
