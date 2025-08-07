@@ -1,6 +1,6 @@
 services:
   dnsmasq:
-    image: strm/dnsmasq
+    image: jpillora/dnsmasq
     container_name: dnsmasq
     restart: unless-stopped
     cap_add:
