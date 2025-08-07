@@ -5,13 +5,6 @@ http:
       entryPoints: [web]
       service: nas-service
 
-    photo:
-      service: photo-service
-      middlewares:
-        - "photo-path-rewrite"
-      rule: "Host(`photo.nas.sko`)"
-      entryPoints: [web]
-
     server:
       rule: "Host(`server.sko`)"
       entryPoints: [web]
@@ -37,19 +30,8 @@ http:
       entryPoints: [web]
       service: traefik-service
 
-  middlewares:
-    photo-path-rewrite:
-      replacePathRegex:
-        regex: "^/(.*)"
-        replacement: "/photo/$1"
-
   services:
     nas-service:
-      loadBalancer:
-        servers:
-          - url: "http://192.168.88.101:5000"
-
-    photo-service:
       loadBalancer:
         servers:
           - url: "http://192.168.88.101:5000"
